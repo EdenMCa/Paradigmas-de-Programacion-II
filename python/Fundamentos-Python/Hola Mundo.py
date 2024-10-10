@@ -1,6 +1,7 @@
 """
-Mendoza Casarrubia Rosendo Eden
-Primero "Hola mundo" en Python
+Nombre:Mendoza Casarrubia Rosendo Eden
+Descripción: Primero "Hola mundo" en Python
+Fecha: 09-10-2024
 """
 
 print("Hola Mundo")
