@@ -1,6 +1,6 @@
-# Alberto Martínez Barbosa
-# 7 de septiembre de 2024
-# En este archivo se ejemplifica el uso de variables en Python.
+# Nombre: Mendoza Casarrubia Rosendo Eden
+# Fecha: 09 - 10 - 2024
+# Descripción: En este archivo se ejemplifica el uso de variables en Python.
 
 # Notas:
 # En Python to.do es un objeto.
