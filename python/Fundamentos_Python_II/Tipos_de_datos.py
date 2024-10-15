@@ -1,8 +1,7 @@
 '''
-Alberto Martínez Barbosa
-7 de septiembre de 2024.
-Descripción:
-Usos de los tipos básico de datos en Python.
+Nombre: Mendoza Casarrubia Rosendo Eden
+Fecha: 10 - 10 - 2024.
+Descripción: Programa que nos muestra los usos de los tipos básico de datos en Python.
 '''
 
 # Notas:

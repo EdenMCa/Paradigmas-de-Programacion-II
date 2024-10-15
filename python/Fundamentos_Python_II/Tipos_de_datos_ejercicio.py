@@ -2,9 +2,9 @@
 Nombre: Mendoza Casarrubia Rosendo Eden
 Fecha: 10-10-2024
 Descripción:
-# Este programa registra y muestra los gastos diarios en diferentes categorías.
-# Se utilizan variables para almacenar información sobre el día, pasaje, comida y otros gastos.
-# También se incluye un booleano para indicar si los gastos fueron mayores a un presupuesto definido.
+- Este programa registra y muestra los gastos diarios en diferentes categorías.
+- Se utilizan variables para almacenar información sobre el día, pasaje, comida y otros gastos.
+- También se incluye un booleano para indicar si los gastos fueron mayores a un presupuesto definido.
 
 """
 
