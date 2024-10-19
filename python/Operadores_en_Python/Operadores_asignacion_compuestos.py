@@ -1,5 +1,6 @@
 """
-
+Nombre:
+Fecha: 18 - 10 - 2024
 """
 
 num1 = float(input("Ingrese el primer número: "))
