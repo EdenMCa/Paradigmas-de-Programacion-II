@@ -17,9 +17,9 @@ bool_anos = input("¿Tiene más de 5 años en la UNSIJ? ")
 # El valor ingresado se almacena como una cadena
 
 bool_anos = bool_anos.lower() == "si"
-# Se convierte el valor de 'bool_años' a minúsculas usando el método '.lower()'
+# Se convierte el valor de 'bool_anos' a minúsculas usando el método '.lower()'
 # Luego se compara este valor con la cadena "si".
 # La comparación devuelve 'True' si el usuario ingresó "si" y 'False' en caso contrario.
-# Este resultado booleano se almacena nuevamente en 'bool_años'.
+# Este resultado booleano se almacena nuevamente en 'bool_anos'.
 print(f"El profesor {nombre_cadena}, ubicado en el cubículo número {no_cubiculo} imparte un total de {horas_clase:.3f} horas de clases a la semana. Además, tiene más de 5 años en la unsij: {bool_anos}")
 # .3f se utilizó para que las horas de clases se muestren con 3 decimales.
