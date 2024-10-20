@@ -1,7 +1,7 @@
 """
 Nombre: Mendoza Casarrubia Rosendo Eden
 Fecha: 20 - 10 - 2024
-Descripción: Este programa permite ingresar información de los profesores de la UNSIJ, al final imprime esta infromación en un formato adecuado.
+Descripción: Este programa permite ingresar información de los profesores de la UNSIJ, al final imprime esta información en un formato adecuado.
 """
 
 print("A continuación, ingrese los datos que se le piden")
