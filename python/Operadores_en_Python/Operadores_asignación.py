@@ -3,6 +3,12 @@ Nombre: Mendoza Casarrubia Rosendo Eden
 Fecha: 17 - 10 - 2024
 Descripción: Este programa muestra ejemplos de asignación múltiple, asignación encadenada, intercambio de variables y múltiples variables de entrada.
 """
+
+"""
+En programación, las operaciones de asignación se utilizan para almacenar un valor en una variable. 
+Es decir, se establece una relación entre un nombre (la variable) y un valor en la memoria de la computadora.
+"""
+
 print("Asignación múltiple")
 num1, num2 = 7, 10 # Asigna valores a num1 y num2 simultáneamente.
 
