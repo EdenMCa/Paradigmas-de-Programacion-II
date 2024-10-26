@@ -6,6 +6,12 @@ sobre dos números ingresados por el usuario. A medida que se realizan las opera
 variables se utilizan, lo que actualiza sus valores después de cada operación.
 """
 
+"""
+Los operadores de asignación compuestos son una forma abreviada de realizar una operación aritmética y una asignación
+en una sola línea de código. Combinan un operador aritmético (como suma, resta, multiplicación, división, etc.) 
+con el operador de asignación (=).
+"""
+
 num1 = float(input("Ingrese el primer número: ")) # Se solicita al usuario que ingrese el primer número.
 num2 = float(input("Ingrese el segundo número: ")) # Se solicita al usuario que ingrese el segundo número.
 
