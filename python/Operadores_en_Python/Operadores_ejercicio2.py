@@ -13,4 +13,4 @@ es_profesor = input("¿Es profesor de la UNSIJ? ")
 es_profesor = es_profesor.lower() == "si"
 
 print(f"Pertenece a la comunidad UNSIJ: {es_estudiante or es_profesor}")
-# Se imprime TRUE si una de las dos condicioes es verdadera, esto significa que pertenece a la comunidad si es estudiante o profesor
+# Se imprime TRUE si una de las dos condiciones es verdadera, esto significa que pertenece a la comunidad ya sea siendo estudiante o profesor
