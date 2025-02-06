@@ -8,12 +8,13 @@ class Conexion:
         if cls.pool is None:
             try:
                 cls.pool = pooling.MySQLConnectionPool(
-                    host="localhost",
-                    user="root",
-                    password="root",
-                    database="historial",
-                    pool_name="DB_historial_pool",
-                    pool_size=5
+                    host = "localhost",
+                    user = "root",
+                    password = "root",
+                    database = "historial",
+                    pool_name = "DB_historial_pool",
+                    pool_size = 3,
+                    ssl_disabled = True
                 )
                 print("Pool creado")
             except Error as e:

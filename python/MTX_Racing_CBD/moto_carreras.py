@@ -9,7 +9,7 @@ from database import guardar_puntuacion  # Función para guardar en la base de d
 def show_start_screen(screen, moto_config):
     """
     Pantalla de inicio con música y botón 'Start'.
-    Al hacer clic en el botón, se detiene la música y se sale de esta pantalla.
+    La música de inicio se reproduce hasta que el jugador inicia el juego.
     """
     pygame.mixer.init()
     # Cargar y reproducir música de inicio
@@ -50,8 +50,8 @@ def show_start_screen(screen, moto_config):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            # Se elimina la detención de la música aquí para que siga sonando
             elif event.type == pygame.MOUSEBUTTONDOWN and button_rect.collidepoint(event.pos):
-                pygame.mixer.music.stop()  # Detener la música de inicio
                 running = False
 
         pygame.display.flip()
@@ -60,7 +60,7 @@ def show_start_screen(screen, moto_config):
 def get_player_name(screen, moto_config):
     """
     Pantalla para que el jugador ingrese su nombre.
-    Devuelve el nombre ingresado.
+    La música de inicio continúa sonando hasta que el jugador presione "Aceptar".
     """
     font = pygame.font.Font("Media/LetraRetro.ttf", 20)  # Fuente más pequeña para el nombre
     button_font = pygame.font.Font("Media/LetraRetro.ttf", 15)  # Fuente más pequeña para el botón "Aceptar"
@@ -127,14 +127,19 @@ def get_player_name(screen, moto_config):
 
         clock.tick(moto_config.FPS)
 
+    pygame.mixer.music.stop()  # Detener la música de inicio cuando se ingresa el nombre
     return name
-
-
 
 def show_gameOver_screen(screen, moto_config):
     """
     Muestra la pantalla de Game Over con opciones para volver a jugar o salir.
+    Se reproduce una música exclusiva para esta pantalla.
     """
+    # Cargar y reproducir la música de Game Over (sólo mientras se muestra esta pantalla)
+    pygame.mixer.music.load("Media/RIP-15.wav")
+    pygame.mixer.music.set_volume(1)
+    pygame.mixer.music.play(-1)
+
     pygame.mouse.set_visible(False)
     screen.fill((0, 0, 0))
     font_path = "Media/LetraRetro.ttf"
@@ -198,6 +203,8 @@ def show_gameOver_screen(screen, moto_config):
                         pygame.quit()
                         sys.exit()
         clock.tick(moto_config.FPS)
+
+    pygame.mixer.music.stop()  # Detener la música de Game Over al salir de la pantalla
 
 def run_game():
     pygame.init()
