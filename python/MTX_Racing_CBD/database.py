@@ -8,11 +8,11 @@ class Conexion:
         if cls.pool is None:
             try:
                 cls.pool = pooling.MySQLConnectionPool(
-                    host = "localhost",
-                    user = "root",
-                    password = "root",
-                    database = "historial",
-                    pool_name = "DB_historial_pool",
+                    host = "172.25.3.201",
+                    user = "usuario",
+                    password = "unsij",
+                    database = "historial_juego",
+                    pool_name = "DB_historialJuego_pool",
                     pool_size = 3,
                     ssl_disabled = True
                 )
