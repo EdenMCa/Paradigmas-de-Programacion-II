@@ -62,47 +62,54 @@ def get_player_name(screen, moto_config):
     Pantalla para que el jugador ingrese su nombre.
     La música de inicio continúa sonando hasta que el jugador presione "Aceptar".
     """
-    font = pygame.font.Font("Media/LetraRetro.ttf", 20)  # Fuente más pequeña para el nombre
-    button_font = pygame.font.Font("Media/LetraRetro.ttf", 15)  # Fuente más pequeña para el botón "Aceptar"
+    font = pygame.font.Font("Media/Games-Italic.ttf", 30)  # Fuente retro más adecuada
+    nametext = pygame.font.Font("Media/Name Smile.otf", 20)
+    button_font = pygame.font.Font("Media/Games-Italic.ttf", 25)  # Fuente más retro para el botón "Aceptar"
     name = ""
     active = True
     clock = pygame.time.Clock()
 
-    # Colores
-    text_color = (0, 0, 0)  # Color negro para el texto
-    input_box_color = (50, 50, 50)
-    input_box_active_color = (50, 50, 50)
-    button_color = (0, 128, 0)  # Botón verde
-    button_hover_color = (0, 200, 0)  # Verde más brillante al pasar el ratón
+    # Colores adecuados para un tema retro
+    text_color = (0, 0, 0)
+    name_color = (0, 0, 0)
+    input_box_color = (255, 255, 255)
+    input_box_active_color = (105, 105, 105)  # Amarillo brillante al estar activo, para un efecto retro
+    button_color = (0, 0, 0)  # Verde para el botón
+    button_hover_color = (0, 255, 0)  # Verde brillante cuando el ratón pasa sobre el botón
+    button_text_color = (255, 255, 255)  # Color del texto del botón
 
     # Cargar imagen de fondo (opcional)
     background_image = pygame.image.load("Media/base.png")
     background_image = pygame.transform.scale(background_image, (moto_config.screen_width, moto_config.screen_height))
 
     # Crear rectángulo para el campo de texto
-    input_box = pygame.Rect(moto_config.screen_width // 2 - 150, 300, 300, 35)
+    input_box = pygame.Rect(moto_config.screen_width // 2 - 110, 310, 220, 35)
 
     while active:
         screen.blit(background_image, (0, 0))  # Fondo de pantalla
         pygame.draw.rect(screen, input_box_active_color if len(name) > 0 else input_box_color, input_box)
 
         prompt = font.render("Ingresa tu nombre:", True, text_color)
-        name_text = font.render(name, True, text_color)
+        name_text = nametext.render(name, True, name_color)
 
-        # Posicionar el texto
+        text_width = name_text.get_width()
+        text_x = input_box.x + (input_box.width - text_width) // 2  # Centra el texto dentro del cuadro
         screen.blit(prompt, (moto_config.screen_width // 2 - prompt.get_width() // 2, 270))
-        screen.blit(name_text, (input_box.x + 10, input_box.y + 10))
+        screen.blit(name_text, (text_x, input_box.y + 10))  # El texto ahora se centra dinámicamente
 
         # Dibujar botón "Aceptar"
-        button_rect = pygame.Rect(moto_config.screen_width // 2 - 120, 400, 240, 35)  # Tamaño más equilibrado
+        button_rect = pygame.Rect(moto_config.screen_width // 2 - 50, 375, 100, 40)  # Tamaño más equilibrado
         mouse_pos = pygame.mouse.get_pos()
 
+        # Cambiar color del botón y texto cuando el ratón pasa sobre el botón
         if button_rect.collidepoint(mouse_pos):
             pygame.draw.rect(screen, button_hover_color, button_rect)
+            button_text_color = (0, 0, 0)  # Cambiar el color del texto a negro cuando el ratón pasa sobre el botón
         else:
             pygame.draw.rect(screen, button_color, button_rect)
+            button_text_color = (255, 255, 255)  # Color original del texto
 
-        button_text = button_font.render("Aceptar", True, text_color)
+        button_text = button_font.render("Jugar", True, button_text_color)
         screen.blit(button_text, (button_rect.centerx - button_text.get_width() // 2, button_rect.centery - button_text.get_height() // 2))
 
         pygame.display.flip()
@@ -117,7 +124,7 @@ def get_player_name(screen, moto_config):
                 elif event.key == pygame.K_BACKSPACE:
                     name = name[:-1]
                 else:
-                    if len(name) < 14:
+                    if len(name) < 8:
                         name += event.unicode
 
             # Verificar si el botón "Aceptar" fue presionado
@@ -130,6 +137,7 @@ def get_player_name(screen, moto_config):
     pygame.mixer.music.stop()  # Detener la música de inicio cuando se ingresa el nombre
     return name
 
+
 def show_gameOver_screen(screen, moto_config):
     """
     Muestra la pantalla de Game Over con opciones para volver a jugar o salir.
@@ -137,8 +145,8 @@ def show_gameOver_screen(screen, moto_config):
     """
     # Cargar y reproducir la música de Game Over (sólo mientras se muestra esta pantalla)
     pygame.mixer.music.load("Media/RIP-15.wav")
-    pygame.mixer.music.set_volume(1)
-    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(1.5)
+    pygame.mixer.music.play(0)
 
     pygame.mouse.set_visible(False)
     screen.fill((0, 0, 0))
@@ -154,7 +162,7 @@ def show_gameOver_screen(screen, moto_config):
     game_over_pos = (moto_config.screen_width // 2 - game_over_image.get_width() // 2, -150)
     title_pos = (moto_config.screen_width // 2, 200)
 
-    play_again_text = play_again_font.render("Play Again", True, (255, 255, 255))
+    play_again_text = play_again_font.render("Play Again?", True, (255, 255, 255))
     play_again_pos = (moto_config.screen_width // 2 - play_again_text.get_width() // 2, 300)
 
     option_spacing = 100

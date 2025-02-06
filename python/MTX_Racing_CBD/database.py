@@ -55,6 +55,3 @@ if __name__ == "__main__":
         conn.close()
     except Error as e:
         print("Error al probar la conexión:", e)
-
-    # Probar inserción
-    guardar_puntuacion("Prueba", 100)
