@@ -60,7 +60,6 @@ def show_start_screen(screen, moto_config):
 def get_player_name(screen, moto_config):
     """
     Pantalla para que el jugador ingrese su nombre.
-    La música de inicio continúa sonando hasta que el jugador presione "Aceptar".
     """
     font = pygame.font.Font("Media/Games-Italic.ttf", 30)  # Fuente retro más adecuada
     nametext = pygame.font.Font("Media/Name Smile.otf", 20)
@@ -78,7 +77,6 @@ def get_player_name(screen, moto_config):
     button_hover_color = (0, 255, 0)  # Verde brillante cuando el ratón pasa sobre el botón
     button_text_color = (255, 255, 255)  # Color del texto del botón
 
-    # Cargar imagen de fondo (opcional)
     background_image = pygame.image.load("Media/base.png")
     background_image = pygame.transform.scale(background_image, (moto_config.screen_width, moto_config.screen_height))
 
@@ -143,7 +141,7 @@ def show_gameOver_screen(screen, moto_config):
     Muestra la pantalla de Game Over con opciones para volver a jugar o salir.
     Se reproduce una música exclusiva para esta pantalla.
     """
-    # Cargar y reproducir la música de Game Over (sólo mientras se muestra esta pantalla)
+    # Cargar y reproducir la música de Game Over
     pygame.mixer.music.load("Media/RIP-15.wav")
     pygame.mixer.music.set_volume(1.5)
     pygame.mixer.music.play(0)

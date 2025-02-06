@@ -25,14 +25,25 @@ class Conexion:
     def get_connection(cls):
         return cls.get_pool().get_connection()
 
+
 def guardar_puntuacion(nombre, puntuacion):
     conn = Conexion.get_connection()
     try:
         cursor = conn.cursor()
-        query = "INSERT INTO puntuaciones (nombre, puntuacion) VALUES (%s, %s)"
-        cursor.execute(query, (nombre, puntuacion))
+        select_query = "SELECT COUNT(*) FROM puntuaciones WHERE nombre = %s"
+        cursor.execute(select_query, (nombre,))
+        exists = cursor.fetchone()[0]
+
+        if exists:
+            update_query = "UPDATE puntuaciones SET puntuacion = %s WHERE nombre = %s"
+            cursor.execute(update_query, (puntuacion, nombre))
+            print(f"Puntuación de {nombre} actualizada a: {puntuacion}")
+        else:
+            insert_query = "INSERT INTO puntuaciones (nombre, puntuacion) VALUES (%s, %s)"
+            cursor.execute(insert_query, (nombre, puntuacion))
+            print(f"Puntuación de {nombre} guardada con éxito: {puntuacion}")
+
         conn.commit()
-        print(f"Puntuación de {nombre} guardada con éxito: {puntuacion}")
     except Error as e:
         print(f"Error al guardar la puntuación: {e}")
     finally:
@@ -44,6 +55,7 @@ def guardar_puntuacion(nombre, puntuacion):
             conn.close()
         except Exception as ex:
             print("Error cerrando la conexión:", ex)
+
 
 # Función de prueba (opcional)
 if __name__ == "__main__":
